@@ -1,0 +1,54 @@
+﻿@model IEnumerable<SignalR.Models.Book>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Discription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookType.Discription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Language.LanguageName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookType.Discription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Language.LanguageName)
+            </td>
+            <td>
+                <a href="/Book/Edit/@item.ID">Edit</a> |
+                <a href="/Book/Delete/@item.ID">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

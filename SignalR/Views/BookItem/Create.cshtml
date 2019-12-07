@@ -1,0 +1,50 @@
+﻿
+
+@model SignalR.Models.ViewModel.BookItemViewModel
+
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+<h4>Book Item</h4>
+<hr />
+
+
+<div class="form-group">
+
+
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+
+            @Html.ValidationSummary(true, "", new { htmlAttributes = new { @class = "text-danger" } })
+            @Html.HiddenFor(model => model.ID)
+            <div class="form-group">
+                @Html.LabelFor(model => model.selectedBook, htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownList("selectedBook", (MultiSelectList)ViewBag.Books)
+                @Html.ValidationMessageFor(model => model.selectedBook, "", new { htmlAttributes = new { @class = "text-danger" } })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.selectedState, htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownList("selectedState", (MultiSelectList)ViewBag.States)
+                @Html.ValidationMessageFor(model => model.selectedState, "", new { htmlAttributes = new { @class = "text-danger" } })
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        }
+    </div>
+</div>
+
+<div>
+</div>
+

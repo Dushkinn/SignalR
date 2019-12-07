@@ -1,0 +1,46 @@
+﻿@model IEnumerable<SignalR.Models.ReservationBook>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BookItem.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.FullName)
+            </th>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookItem.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.FullName)
+                </td>
+
+
+                <td>
+                    <a href="/ReservationBook/Edit/@item.ID">Edit</a> |
+                    <a href="/ReservationBook/Delete/@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

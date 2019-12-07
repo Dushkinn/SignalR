@@ -1,0 +1,50 @@
+﻿
+@model SignalR.Models.ViewModel.TagsListModel
+
+@{
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+ 
+
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Discription
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model.TagsList)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelitem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelitem => item.Discription)
+                    </td>
+                    <td>
+                        <a asp-page="./edit" asp-route-id="@item.ID">edit</a> |
+                        <a asp-page="./delete" asp-route-id="@item.ID">delete</a>
+                    </td>
+                </tr>
+            }
+
+        }
+        else
+        {
+
+            <h1>The list is empty</h1>
+        }
+    </tbody>
+</table>

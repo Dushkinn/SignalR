@@ -1,0 +1,151 @@
+﻿@page
+@using Microsoft.AspNetCore.Http
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+    <div class="container mt-4">
+        <div class="d-block text-right">
+            @{
+                var name = "";
+                var institute = "";
+                if (TempData.ContainsKey("name"))
+                {
+                    name = TempData["name"] as string;
+                }
+                if (TempData.ContainsKey("institute"))
+                {
+                    institute = TempData["institute"] as string;
+                }
+            }
+            <h2> @name </h2>
+            <h2> @institute </h2>
+
+            <span class="">Name: @HttpContext.Session.GetString("User")</span>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                Tag
+            </div>
+            <div class="card-body">
+                <a asp-controller="Tag" asp-action="Index" asp- class="btn btn-primary">TagList</a>
+                <a asp-controller="Tag" asp-action="Create" class="btn btn-primary">Create Tag</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                Language
+            </div>
+            <div class="card-body">
+                <a asp-controller="Language" asp-action="Index" asp- class="btn btn-primary">Language List</a>
+                <a asp-controller="Language" asp-action="Create" class="btn btn-primary">Create Language</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                BookType
+            </div>
+            <div class="card-body">
+                <a asp-controller="BookType" asp-action="Index" asp- class="btn btn-primary">BookType List</a>
+                <a asp-controller="BookType" asp-action="Create" class="btn btn-primary">Create BookType</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                Author
+            </div>
+            <div class="card-body">
+                <a asp-controller="Author" asp-action="Index" asp- class="btn btn-primary">Author List</a>
+                <a asp-controller="Author" asp-action="Create" class="btn btn-primary">Create Author</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                User Role
+            </div>
+            <div class="card-body">
+                <a asp-controller="UserRole" asp-action="Index" asp- class="btn btn-primary">User Role List</a>
+                <a asp-controller="UserRole" asp-action="Create" class="btn btn-primary">Create User Role</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                Book
+            </div>
+            <div class="card-body">
+                <a asp-controller="Book" asp-action="Index" asp- class="btn btn-primary">Book List</a>
+                <a asp-controller="Book" asp-action="Create" class="btn btn-primary">Create Book</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                User
+            </div>
+            <div class="card-body">
+                <a asp-controller="User" asp-action="Index" asp- class="btn btn-primary">User List</a>
+                <a asp-controller="User" asp-action="Create" class="btn btn-primary">Create User</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                Book State
+            </div>
+            <div class="card-body">
+                <a asp-controller="StateType" asp-action="Index" asp- class="btn btn-primary">Book State List</a>
+                <a asp-controller="StateType" asp-action="Create" class="btn btn-primary">Create Book State</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                Book Item
+            </div>
+            <div class="card-body">
+                <a asp-controller="BookItem" asp-action="Index" asp- class="btn btn-primary">Book Item List</a>
+                <a asp-controller="BookItem" asp-action="Create" class="btn btn-primary">Create Book Item</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                Reservation Book
+            </div>
+            <div class="card-body">
+                <a asp-controller="ReservationBook" asp-action="Index" asp- class="btn btn-primary">Reservation Book List</a>
+                <a asp-controller="ReservationBook" asp-action="Create" class="btn btn-primary">Create Reservation Book</a>
+            </div>
+        </div>
+
+
+
+        <div class="container">
+            <div class="row">&nbsp;</div>
+            <div class="row">
+                <div class="col-2">User</div>
+                <div class="col-4"><input type="text" id="userInput" /></div>
+            </div>
+            <div class="row">
+                <div class="col-2">Message</div>
+                <div class="col-4"><input type="text" id="messageInput" /></div>
+            </div>
+            <div class="row">&nbsp;</div>
+            <div class="row">
+                <div class="col-6">
+                    <input type="button" id="sendButton" value="Send Message" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <hr />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <ul id="messagesList"></ul>
+            </div>
+        </div>
+        <script src="~/js/signalr/dist/browser/signalr.js"></script>
+        <script src="~/js/chat.js"></script>
+
+</div>
+
+

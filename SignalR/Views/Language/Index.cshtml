@@ -1,0 +1,36 @@
+﻿@model IEnumerable<SignalR.Models.Language>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LanguageName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LanguageName)
+                </td>
+                <td>
+                    <a href="/Language/Edit/@item.ID" >Edit</a> |
+                    <a href="/Language/Delete/@item.ID" >Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
