@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -16,20 +17,24 @@ namespace SignalR.Controllers
     public class UserController : Controller
     {
 
-        [TempData]
-        public string Message { get; set; }
+        private readonly UserManager<IdentityUser> userManager;
         private readonly ApplicationContext _dbContext;
 
-        public UserController(ApplicationContext dbContext)
+        public UserController(ApplicationContext dbContext , UserManager<IdentityUser> userManager)
         {
+            this.userManager = userManager;
             _dbContext = dbContext;
         }
         // GET: Language
         public async Task<IActionResult> Index()
         {
-            var user = _dbContext.Users.Include(c => c.Role).ToList();
 
-            return View(user);
+            // var user = _dbContext.Users.Include(c => c.Role).ToList();
+            var usersModel = new UserViewModel
+            {
+                users = await userManager.Users.ToListAsync()
+            };
+            return View(usersModel);
         }
 
         // GET: Language/Details/5
@@ -47,49 +52,48 @@ namespace SignalR.Controllers
 
             return View(new UserViewModel
             {
-                ID = Guid.NewGuid()
+               
             });
         }
 
         // POST: Language/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(UserViewModel userViewModel)
-        {
-            try
-            {
-                if (!ModelState.IsValid)
-                {
-                    var roles = _dbContext.UserRoles.ToList();
-                    ViewBag.Roles = new MultiSelectList(roles, "Role", "Name");
-                    return View("Create", userViewModel);
-                }
-                UserRole userRole = _dbContext.UserRoles.Find(userViewModel.selectedRole);
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Create(UserViewModel userViewModel)
+        //{
+        //    try
+        //    {
+        //        if (!ModelState.IsValid)
+        //        {
+        //            var roles = _dbContext.UserRoles.ToList();
+        //            ViewBag.Roles = new MultiSelectList(roles, "Role", "Name");
+        //            return View("Create", userViewModel);
+        //        }
+        //        UserRole userRole = _dbContext.UserRoles.Find(userViewModel.selectedRole);
 
-                User user = new User
-                {
-                    FullName = userViewModel.FullName,
-                    Password = userViewModel.Password,
-                    Role = userRole
-                };
+        //        User user = new User
+        //        {
+        //            FullName = userViewModel.FullName,
+        //            Password = userViewModel.Password,
+        //            Role = userRole
+        //        };
 
                 
                 
-                _dbContext.Users.Add(user);
+        //        _dbContext.Users.Add(user);
                 
-                await _dbContext.SaveChangesAsync();
-                Message = $"Customer {user.FullName} added";
+        //        await _dbContext.SaveChangesAsync();
                 
-                HttpContext.Session.SetString("Message", $"Customer {user.FullName} added");
-                return RedirectToPage("/Index");
+        //        HttpContext.Session.SetString("Message", $"Customer {user.FullName} added");
+        //        return RedirectToPage("/Index");
 
 
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
 
         // GET: Language/Edit/5
         //public ActionResult Edit(Guid id)
@@ -110,29 +114,29 @@ namespace SignalR.Controllers
         //}
 
         // POST: Language/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(UserViewModel userViewModel)
-        {
-            try
-            {
-                UserRole userRole = _dbContext.UserRoles.Find(userViewModel.selectedRole);
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit(UserViewModel userViewModel)
+        //{
+        //    try
+        //    {
+        //        UserRole userRole = _dbContext.UserRoles.Find(userViewModel.selectedRole);
 
-                User user = new User
-                {
-                    FullName = userViewModel.FullName,
-                    Password = userViewModel.Password,
-                    Role = userRole
-                };
-                _dbContext.Users.Update(user);
-                _dbContext.SaveChanges();
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //        User user = new User
+        //        {
+        //            FullName = userViewModel.FullName,
+        //            Password = userViewModel.Password,
+        //            Role = userRole
+        //        };
+        //        _dbContext.Users.Update(user);
+        //        _dbContext.SaveChanges();
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
 
         // GET: Language/Delete/5
         //public ActionResult Delete(Guid id)

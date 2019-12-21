@@ -562,10 +562,6 @@ C:/Users/duski/Source/Repos/SignalR2/SignalR/obj/Debug/netcoreapp3.0/SignalR.pdb
 /Users/nikitadushkin/Projects/SignalR/SignalR/obj/Debug/netcoreapp3.0/Razor/Views/Tag/Details.cshtml.g.cs
 /Users/nikitadushkin/Projects/SignalR/SignalR/obj/Debug/netcoreapp3.0/Razor/Views/Tag/Edit.cshtml.g.cs
 /Users/nikitadushkin/Projects/SignalR/SignalR/obj/Debug/netcoreapp3.0/Razor/Views/Tag/TagList.cshtml.g.cs
-/Users/nikitadushkin/Projects/SignalR/SignalR/obj/Debug/netcoreapp3.0/Razor/Views/User/Create.cshtml.g.cs
-/Users/nikitadushkin/Projects/SignalR/SignalR/obj/Debug/netcoreapp3.0/Razor/Views/User/Delete.cshtml.g.cs
-/Users/nikitadushkin/Projects/SignalR/SignalR/obj/Debug/netcoreapp3.0/Razor/Views/User/Details.cshtml.g.cs
-/Users/nikitadushkin/Projects/SignalR/SignalR/obj/Debug/netcoreapp3.0/Razor/Views/User/Edit.cshtml.g.cs
 /Users/nikitadushkin/Projects/SignalR/SignalR/obj/Debug/netcoreapp3.0/Razor/Views/User/Index.cshtml.g.cs
 /Users/nikitadushkin/Projects/SignalR/SignalR/obj/Debug/netcoreapp3.0/Razor/Views/UserRole/Create.cshtml.g.cs
 /Users/nikitadushkin/Projects/SignalR/SignalR/obj/Debug/netcoreapp3.0/Razor/Views/UserRole/Delete.cshtml.g.cs

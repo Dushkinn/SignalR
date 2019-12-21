@@ -1,9 +1,5 @@
 ﻿
-
-
-
-
-@model IEnumerable<SignalR.Models.User>
+@model SignalR.Models.ViewModel.UserViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -19,36 +15,28 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FullName)
+                Email
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Password)
+                
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Role.Name)
+               
             </th>
 
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.users)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.FullName)
+                    @Html.DisplayFor(modelItem => item.UserName)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Password)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Role.Name)
-                </td>
+                
 
-                <td>
-                    <a href="/User/Edit/@item.Id">Edit</a> |
-                    <a href="/User/Delete/@item.Id">Delete</a>
-                </td>
+                
             </tr>
         }
     </tbody>
