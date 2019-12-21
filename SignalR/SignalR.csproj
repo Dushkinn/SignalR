@@ -36,4 +36,7 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Pages\Index.cshtml.cs" />
+  </ItemGroup>
 </Project>

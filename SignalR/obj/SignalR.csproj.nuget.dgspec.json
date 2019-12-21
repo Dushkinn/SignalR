@@ -1,30 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\duski\\Source\\Repos\\SignalR2\\SignalR\\SignalR.csproj": {}
+    "/Users/nikitadushkin/Projects/SignalR/SignalR/SignalR.csproj": {}
   },
   "projects": {
-    "C:\\Users\\duski\\Source\\Repos\\SignalR2\\SignalR\\SignalR.csproj": {
+    "/Users/nikitadushkin/Projects/SignalR/SignalR/SignalR.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\duski\\Source\\Repos\\SignalR2\\SignalR\\SignalR.csproj",
+        "projectUniqueName": "/Users/nikitadushkin/Projects/SignalR/SignalR/SignalR.csproj",
         "projectName": "SignalR",
-        "projectPath": "C:\\Users\\duski\\Source\\Repos\\SignalR2\\SignalR\\SignalR.csproj",
-        "packagesPath": "C:\\Users\\duski\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\duski\\Source\\Repos\\SignalR2\\SignalR\\obj\\",
+        "projectPath": "/Users/nikitadushkin/Projects/SignalR/SignalR/SignalR.csproj",
+        "packagesPath": "/Users/nikitadushkin/.nuget/packages/",
+        "outputPath": "/Users/nikitadushkin/Projects/SignalR/SignalR/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\duski\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/nikitadushkin/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -142,7 +140,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -41,6 +42,7 @@ namespace SignalR.Controllers
 
                 if (result.Succeeded)
                 {
+                    HttpContext.Session.SetString("User", model.Email);
                     await signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("index", "index");
                 }
@@ -50,7 +52,7 @@ namespace SignalR.Controllers
                     ModelState.AddModelError("", error.Description);
                 }
             }
-
+            
             return View(model);
         }
 
@@ -66,15 +68,17 @@ namespace SignalR.Controllers
             if (ModelState.IsValid)
             {
                 var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, true, false);
-
                 if (result.Succeeded)
                 {
+                    
+                    HttpContext.Session.SetString("User", model.Email);
+                    TempData["Message"] = $"You are logged in as a user {model.Email}";
                     return RedirectToAction("index", "home");
                 }
 
                 ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
             }
-
+            
             return View(model);
         }
 

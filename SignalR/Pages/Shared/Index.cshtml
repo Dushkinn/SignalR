@@ -1,29 +1,38 @@
-﻿@page
+﻿
 @using Microsoft.AspNetCore.Http
-@model IndexModel
+@inject IHttpContextAccessor HttpContextAccessor
+
 @{
     ViewData["Title"] = "Home page";
 }
-    <div class="container mt-4">
+    <div class="container">
         <div class="d-block text-right">
             @{
-                var name = "";
+                var message = "";
                 var institute = "";
                 if (TempData.ContainsKey("name"))
                 {
-                    name = TempData["name"] as string;
+                    message = TempData["Message"] as string;
                 }
                 if (TempData.ContainsKey("institute"))
                 {
                     institute = TempData["institute"] as string;
+
+                    
                 }
             }
-            <h2> @name </h2>
-            <h2> @institute </h2>
-
-            <span class="">Name: @HttpContext.Session.GetString("User")</span>
+            @if (ViewBag.message != null)
+             {
+                <div class="alert alert-primary text-center" role="alert">
+                    @ViewBag.message
+                </div>
+            }
+            @message
+            <span class="d-none" id="userDisplay">@HttpContextAccessor.HttpContext.Session.GetString("User")</span> 
         </div>
-        <div class="card">
+        <div class="row pr-0 pl-0">
+        <div class="col-8">
+        <div class="card mb-2">
             <div class="card-header">
                 Tag
             </div>
@@ -32,7 +41,7 @@
                 <a asp-controller="Tag" asp-action="Create" class="btn btn-primary">Create Tag</a>
             </div>
         </div>
-        <div class="card">
+        <div class="card mb-2">
             <div class="card-header">
                 Language
             </div>
@@ -41,7 +50,7 @@
                 <a asp-controller="Language" asp-action="Create" class="btn btn-primary">Create Language</a>
             </div>
         </div>
-        <div class="card">
+        <div class="card mb-2">
             <div class="card-header">
                 BookType
             </div>
@@ -50,7 +59,7 @@
                 <a asp-controller="BookType" asp-action="Create" class="btn btn-primary">Create BookType</a>
             </div>
         </div>
-        <div class="card">
+        <div class="card mb-2">
             <div class="card-header">
                 Author
             </div>
@@ -59,7 +68,7 @@
                 <a asp-controller="Author" asp-action="Create" class="btn btn-primary">Create Author</a>
             </div>
         </div>
-        <div class="card">
+        <div class="card mb-2">
             <div class="card-header">
                 User Role
             </div>
@@ -68,7 +77,7 @@
                 <a asp-controller="UserRole" asp-action="Create" class="btn btn-primary">Create User Role</a>
             </div>
         </div>
-        <div class="card">
+        <div class="card mb-2">
             <div class="card-header">
                 Book
             </div>
@@ -77,7 +86,7 @@
                 <a asp-controller="Book" asp-action="Create" class="btn btn-primary">Create Book</a>
             </div>
         </div>
-        <div class="card">
+        <div class="card mb-2">
             <div class="card-header">
                 User
             </div>
@@ -86,7 +95,7 @@
                 <a asp-controller="User" asp-action="Create" class="btn btn-primary">Create User</a>
             </div>
         </div>
-        <div class="card">
+        <div class="card mb-2">
             <div class="card-header">
                 Book State
             </div>
@@ -95,7 +104,7 @@
                 <a asp-controller="StateType" asp-action="Create" class="btn btn-primary">Create Book State</a>
             </div>
         </div>
-        <div class="card">
+        <div class="card mb-2">
             <div class="card-header">
                 Book Item
             </div>
@@ -104,7 +113,7 @@
                 <a asp-controller="BookItem" asp-action="Create" class="btn btn-primary">Create Book Item</a>
             </div>
         </div>
-        <div class="card">
+        <div class="card mb-2">
             <div class="card-header">
                 Reservation Book
             </div>
@@ -113,17 +122,17 @@
                 <a asp-controller="ReservationBook" asp-action="Create" class="btn btn-primary">Create Reservation Book</a>
             </div>
         </div>
+            </div>
 
 
-
-        <div class="container">
+        <div class="col-4">
             <div class="row">&nbsp;</div>
             <div class="row">
-                <div class="col-2">User</div>
+                <div class="col-3">User</div>
                 <div class="col-4"><input type="text" id="userInput" /></div>
             </div>
             <div class="row">
-                <div class="col-2">Message</div>
+                <div class="col-3">Message</div>
                 <div class="col-4"><input type="text" id="messageInput" /></div>
             </div>
             <div class="row">&nbsp;</div>
@@ -132,7 +141,7 @@
                     <input type="button" id="sendButton" value="Send Message" />
                 </div>
             </div>
-        </div>
+        
         <div class="row">
             <div class="col-12">
                 <hr />
@@ -143,9 +152,11 @@
                 <ul id="messagesList"></ul>
             </div>
         </div>
+            </div>
+            </div>
         <script src="~/js/signalr/dist/browser/signalr.js"></script>
         <script src="~/js/chat.js"></script>
-
+       
 </div>
 
 

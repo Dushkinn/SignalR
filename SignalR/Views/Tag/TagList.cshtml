@@ -34,8 +34,8 @@
                         @Html.DisplayFor(modelitem => item.Discription)
                     </td>
                     <td>
-                        <a asp-page="./edit" asp-route-id="@item.ID">edit</a> |
-                        <a asp-page="./delete" asp-route-id="@item.ID">delete</a>
+                        <a href="Tag/edit/@item.ID">edit</a> |
+                        <a href="Tag/delete/@item.ID">delete</a>
                     </td>
                 </tr>
             }

@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -29,7 +32,16 @@
                     <li class="nav-item active">
                         <a asp-controller="home" asp-action="index" class="nav-link">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li class="nav-item">
+                           <span class="nav-link">@User.Identity.Name</span> 
+                        </li>
+                        <li class="nav-item">
+                             <a asp-controller="Account" asp-action="Logout" class="nav-link">Logout <span class="sr-only">(current)</span></a>
+                           
+                        </li>
+                    }
                     
 
                 </ul>
@@ -40,7 +52,7 @@
 
     <partial name="_CookieConsentPartial" />
 
-    <div class="container body-content">
+    <div class="container body-content pt-3">
         @RenderBody()
         <hr />
         <footer>
@@ -63,7 +75,11 @@
      
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
-
+     <script>
+            $(document).ready(function () {
+                $("#userInput").val($("#userDisplay").html());
+            })
+        </script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

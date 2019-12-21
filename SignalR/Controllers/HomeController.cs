@@ -23,7 +23,7 @@ namespace SignalR.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            
+            ViewBag.message = TempData["Message"];
             return View();
         }
 

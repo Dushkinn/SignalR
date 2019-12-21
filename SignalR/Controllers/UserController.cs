@@ -73,7 +73,7 @@ namespace SignalR.Controllers
                     Role = userRole
                 };
 
-                HttpContext.Session.SetString("User", user.FullName);
+                
                 
                 _dbContext.Users.Add(user);
                 
