@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using IdentityDemo.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SignalR.Models;
@@ -11,6 +11,7 @@ using SignalR.Models;
 
 namespace SignalR.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ApplicationContext _dbContext;

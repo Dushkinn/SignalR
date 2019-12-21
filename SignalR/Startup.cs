@@ -16,8 +16,8 @@ using SignalR.Services.BookTypes;
 using SignalR.Services.Languages;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Hosting;
-using IdentityDemo.Models;
 using SignalR.Hubs;
+using SignalR.Models;
 
 namespace SignalR
 
@@ -44,9 +44,7 @@ namespace SignalR
             {
                 options.UseSqlite("Filename=libDB.db");
             });
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-              .AddEntityFrameworkStores<ApplicationContext>()
-              .AddDefaultTokenProviders();
+          
 
             services.AddMvc();
             services.AddScoped<AuthorService>();
@@ -60,6 +58,8 @@ namespace SignalR
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationContext>();
 
             services.AddDistributedMemoryCache();
 
@@ -101,8 +101,8 @@ namespace SignalR
                 options.Cookie.HttpOnly = true;
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
 
-                options.LoginPath = "/Identity/Account/Login";
-                options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                options.LoginPath = "/Account/Login";
+                options.AccessDeniedPath = "/Account/AccessDenied";
                 options.SlidingExpiration = true;
             });
             services.AddSignalR();

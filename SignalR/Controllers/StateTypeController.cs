@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SignalR.Models;
 
 namespace SignalR.Controllers
 {
+    [Authorize]
     public class StateTypeController : Controller
     {
         private readonly ApplicationContext _dbContext;

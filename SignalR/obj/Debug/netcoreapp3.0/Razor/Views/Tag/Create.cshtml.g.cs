@@ -13,33 +13,23 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
-#line 1 "C:\Users\duski\source\repos\SignalR\SignalR\Views\_ViewImports.cshtml"
-using Microsoft.AspNetCore.Identity;
-
-#line default
-#line hidden
 #line 2 "C:\Users\duski\source\repos\SignalR\SignalR\Views\_ViewImports.cshtml"
-using IdentityDemo;
+using SignalR;
 
 #line default
 #line hidden
 #line 3 "C:\Users\duski\source\repos\SignalR\SignalR\Views\_ViewImports.cshtml"
-using IdentityDemo.Models;
+using SignalR.Models;
 
 #line default
 #line hidden
 #line 4 "C:\Users\duski\source\repos\SignalR\SignalR\Views\_ViewImports.cshtml"
-using IdentityDemo.Models.AccountViewModels;
-
-#line default
-#line hidden
-#line 5 "C:\Users\duski\source\repos\SignalR\SignalR\Views\_ViewImports.cshtml"
-using IdentityDemo.Models.ManageViewModels;
+using Microsoft.AspNetCore.Identity;
 
 #line default
 #line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"923149ba87a54da64c7933ff930306752ba5b54a", @"/Views/Tag/Create.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6782bfbfb275a1da52ab16110f509f98b863209f", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"cfffc8099bda8c783b0cdbe95ce2a59f497502d5", @"/Views/_ViewImports.cshtml")]
     public class Views_Tag_Create : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<SignalR.Models.Tag>
     {
         #line hidden
@@ -82,7 +72,7 @@ using IdentityDemo.Models.ManageViewModels;
             WriteLiteral("\r\n<!DOCTYPE html>\r\n\r\n<html>\r\n");
             EndContext();
             BeginContext(109, 104, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "923149ba87a54da64c7933ff930306752ba5b54a4159", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "923149ba87a54da64c7933ff930306752ba5b54a3834", async() => {
                 BeginContext(115, 91, true);
                 WriteLiteral("\r\n    <meta name=\"viewport\" content=\"width=device-width\" />\r\n    <title>CreateTag</title>\r\n");
                 EndContext();
@@ -102,7 +92,7 @@ using IdentityDemo.Models.ManageViewModels;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(215, 1346, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "923149ba87a54da64c7933ff930306752ba5b54a5439", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "923149ba87a54da64c7933ff930306752ba5b54a5114", async() => {
                 BeginContext(221, 89, true);
                 WriteLiteral("\r\n\r\n    <h4>Tag</h4>\r\n    <hr />\r\n    <div class=\"row\">\r\n        <div class=\"col-md-4\">\r\n");
                 EndContext();

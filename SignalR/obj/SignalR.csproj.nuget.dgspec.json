@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\duski\\source\\repos\\SignalR\\SignalR\\SignalR.csproj": {}
+    "C:\\Users\\duski\\Source\\Repos\\SignalR2\\SignalR\\SignalR.csproj": {}
   },
   "projects": {
-    "C:\\Users\\duski\\source\\repos\\SignalR\\SignalR\\SignalR.csproj": {
+    "C:\\Users\\duski\\Source\\Repos\\SignalR2\\SignalR\\SignalR.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\duski\\source\\repos\\SignalR\\SignalR\\SignalR.csproj",
+        "projectUniqueName": "C:\\Users\\duski\\Source\\Repos\\SignalR2\\SignalR\\SignalR.csproj",
         "projectName": "SignalR",
-        "projectPath": "C:\\Users\\duski\\source\\repos\\SignalR\\SignalR\\SignalR.csproj",
+        "projectPath": "C:\\Users\\duski\\Source\\Repos\\SignalR2\\SignalR\\SignalR.csproj",
         "packagesPath": "C:\\Users\\duski\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\duski\\source\\repos\\SignalR\\SignalR\\obj\\",
+        "outputPath": "C:\\Users\\duski\\Source\\Repos\\SignalR2\\SignalR\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

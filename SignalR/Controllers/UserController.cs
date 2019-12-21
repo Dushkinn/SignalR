@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,6 +12,7 @@ using SignalR.Models.ViewModel;
 
 namespace SignalR.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
 
@@ -66,7 +68,6 @@ namespace SignalR.Controllers
 
                 User user = new User
                 {
-                    ID = userViewModel.ID,
                     FullName = userViewModel.FullName,
                     Password = userViewModel.Password,
                     Role = userRole
@@ -91,22 +92,22 @@ namespace SignalR.Controllers
         }
 
         // GET: Language/Edit/5
-        public ActionResult Edit(Guid id)
-        {
-            User user = _dbContext.Users.Where(c => c.ID == id).Include(c => c.Role).First();
-            var roles = _dbContext.UserRoles.ToList();
+        //public ActionResult Edit(Guid id)
+        //{
+        //    User user = _dbContext.Users.Where(c => c.ID == id).Include(c => c.Role).First();
+        //    var roles = _dbContext.UserRoles.ToList();
 
-            ViewBag.Roles = new MultiSelectList(roles, "Role", "Name");
+        //    ViewBag.Roles = new MultiSelectList(roles, "Role", "Name");
 
-            return View(new UserViewModel
-            {
-                ID = Guid.NewGuid(),
-                FullName = user.FullName,
-                Password = user.Password,
-                UserRole = user.Role
+        //    return View(new UserViewModel
+        //    {
+        //        ID = Guid.NewGuid(),
+        //        FullName = user.FullName,
+        //        Password = user.Password,
+        //        UserRole = user.Role
 
-            });
-        }
+        //    });
+        //}
 
         // POST: Language/Edit/5
         [HttpPost]
@@ -119,7 +120,6 @@ namespace SignalR.Controllers
 
                 User user = new User
                 {
-                    ID = userViewModel.ID,
                     FullName = userViewModel.FullName,
                     Password = userViewModel.Password,
                     Role = userRole
@@ -135,28 +135,28 @@ namespace SignalR.Controllers
         }
 
         // GET: Language/Delete/5
-        public ActionResult Delete(Guid id)
-        {
+        //public ActionResult Delete(Guid id)
+        //{
 
-            return View(new User { ID = id });
-        }
+        //    return View(new User { ID = id });
+        //}
 
         //POST: Language/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteUser(Guid id)
-        {
-            try
-            {
-                User user = new User { ID = id };
-                _dbContext.Users.Remove(user);
-                _dbContext.SaveChanges();
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteUser(Guid id)
+        //{
+        //    try
+        //    {
+        //        User user = new User { ID = id };
+        //        _dbContext.Users.Remove(user);
+        //        _dbContext.SaveChanges();
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
     }
 }

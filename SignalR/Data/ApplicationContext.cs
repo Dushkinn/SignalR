@@ -1,15 +1,15 @@
-﻿using IdentityDemo.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SignalR.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace SignalR.Controllers
 {
-    public class ApplicationContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationContext : IdentityDbContext
     {
         public ApplicationContext(DbContextOptions options) : base(options)
         {
@@ -30,6 +30,7 @@ namespace SignalR.Controllers
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<IdentityUser>().ToTable("AspNetUsers");
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Book>(entity =>
