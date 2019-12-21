@@ -28,12 +28,14 @@ namespace SignalR.Controllers
         }
 
         // GET: Language/Details/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int id)
         {
             return View();
         }
 
         // GET: Language/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             Author author = new Author();
@@ -44,6 +46,7 @@ namespace SignalR.Controllers
         // POST: Language/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create(Author author)
         {
             try
@@ -66,6 +69,7 @@ namespace SignalR.Controllers
         }
 
         // GET: Language/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(Guid id)
         {
             Author author = _authorService.GetAuthor(id);
@@ -76,6 +80,7 @@ namespace SignalR.Controllers
         // POST: Language/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(Guid id, Author author)
         {
             try
@@ -90,6 +95,7 @@ namespace SignalR.Controllers
         }
 
         // GET: Language/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(Guid id)
         {
 
@@ -99,6 +105,7 @@ namespace SignalR.Controllers
         // POST: Language/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteAuthor(Guid id)
         {
             try

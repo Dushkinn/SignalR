@@ -1,4 +1,4 @@
-using System;
+ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -44,7 +44,11 @@ namespace SignalR
             {
                 options.UseSqlite("Filename=libDB.db");
             });
-          
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("RequireAdministratorRole",
+                     policy => policy.RequireRole("Admin", "User"));
+            });
 
             services.AddMvc();
             services.AddScoped<AuthorService>();
@@ -55,8 +59,6 @@ namespace SignalR
 
             services.AddScoped<LanguageService>();
             services.AddScoped<ILanguageRepository, LanguageRepository>();
-
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationContext>();
@@ -93,6 +95,9 @@ namespace SignalR
                 options.User.RequireUniqueEmail = false;
             });
             //
+
+          
+
             services.AddMvc(option => option.EnableEndpointRouting = false);
             //
             services.ConfigureApplicationCookie(options =>
@@ -109,7 +114,7 @@ namespace SignalR
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IHostingEnvironment env, IServiceProvider services)
         {
             app.UseSession();
             if (env.IsDevelopment())
@@ -121,7 +126,7 @@ namespace SignalR
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
+            app.UseAuthorization();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
@@ -138,7 +143,38 @@ namespace SignalR
                 
                 endpoints.MapHub<ChatHub>("/chatHub");
             });
+            CreateRoles(services).Wait();
 
+        }
+
+        private async Task CreateRoles(IServiceProvider serviceProvider)
+        {
+            var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var UserManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+
+            IdentityResult roleResult;
+            //here in this line we are adding Admin Role
+            var roleCheck = await RoleManager.RoleExistsAsync("Admin");
+            if (!roleCheck)
+            {
+                //here in this line we are creating admin role and seed it to the database
+                roleResult = await RoleManager.CreateAsync(new IdentityRole("Admin"));
+            }
+             roleCheck = await RoleManager.RoleExistsAsync("User");
+            if (!roleCheck)
+            {
+                //here in this line we are creating admin role and seed it to the database
+                roleResult = await RoleManager.CreateAsync(new IdentityRole("User"));
+            }
+            //here we are assigning the Admin role to the User that we have registered above 
+            //Now, we are assinging admin role to this user("Ali@gmail.com"). When will we run this project then it will
+            //be assigned to that user.
+            IdentityUser admin = await UserManager.FindByEmailAsync("duskinn02@gmail.com");
+            
+            await UserManager.AddToRoleAsync(admin, "Admin");
+
+            IdentityUser user = await UserManager.FindByEmailAsync("ashimov@gmail.com");
+            await UserManager.AddToRoleAsync(user, "User");
         }
     }
 }

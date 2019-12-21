@@ -44,7 +44,8 @@ namespace SignalR.Controllers
                 {
                     HttpContext.Session.SetString("User", model.Email);
                     await signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("index", "index");
+                    await userManager.AddToRoleAsync(user, "User");
+                    return RedirectToAction("index", "home");
                 }
 
                 foreach (var error in result.Errors)
