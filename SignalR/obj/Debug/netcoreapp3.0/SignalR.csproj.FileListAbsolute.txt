@@ -759,3 +759,4 @@ C:/Users/duski/Source/Repos/SignalR2/SignalR/obj/Debug/netcoreapp3.0/SignalR.pdb
 /Users/nikitadushkin/Projects/SignalR/SignalR/obj/Debug/netcoreapp3.0/SignalR.Views.pdb
 /Users/nikitadushkin/Projects/SignalR/SignalR/obj/Debug/netcoreapp3.0/SignalR.csproj.CopyComplete
 /Users/nikitadushkin/Projects/SignalR/SignalR/obj/Debug/netcoreapp3.0/Razor/Pages/Shared/Index.cshtml.g.cs
+/Users/nikitadushkin/Projects/SignalR/SignalR/obj/Debug/netcoreapp3.0/SignalR.csprojAssemblyReference.cache
